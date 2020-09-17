@@ -1,5 +1,6 @@
 package com.jmrodrigg.lfprintadapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -357,7 +358,7 @@ public class LFPrintAdapter extends PrintDocumentAdapter {
                 end = writtenPages.valueAt(i);
                 i++;
             }
-            PageRange pageRange = new PageRange(start, end);
+            @SuppressLint("Range") PageRange pageRange = new PageRange(start, end);
             pageRanges.add(pageRange);
             start = -1;
         }

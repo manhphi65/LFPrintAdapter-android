@@ -170,7 +170,9 @@ public class Viewer extends Activity {
         switch (requestCode) {
             case ACTION_PRINT:
                 // Update the print job with the settings selected:
-                mPrintJob = intent.getParcelableExtra(PRINT_JOB_CLASS);
+                if (intent!=null) {
+                    mPrintJob = intent.getParcelableExtra(PRINT_JOB_CLASS);
+                }
                 break;
         }
     }

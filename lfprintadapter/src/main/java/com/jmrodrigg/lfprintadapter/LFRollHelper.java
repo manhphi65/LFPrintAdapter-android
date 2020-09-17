@@ -68,22 +68,13 @@ public class LFRollHelper implements RollHelperConstants {
      */
     public static final int ORIENTATION_PORTRAIT = 2;
 
-    /**
-     * this is a black and white image
-     */
-    public static final int COLOR_MODE_MONOCHROME = 1;
-    /**
-     * this is a color image (default)
-     */
-    public static final int COLOR_MODE_COLOR = 2;
-
     public interface OnPrintFinishCallback {
         void onFinish();
     }
 
     int mScaleMode = SCALE_MODE_FILL;
 
-    int mColorMode = COLOR_MODE_COLOR;
+    int mColorMode = PrintAttributes.COLOR_MODE_COLOR;
 
     int mOrientation = ORIENTATION_LANDSCAPE;
 
@@ -109,11 +100,11 @@ public class LFRollHelper implements RollHelperConstants {
 
     /**
      * Sets whether the image will be printed in color (default)
-     * {@link #COLOR_MODE_COLOR} or in back and white
-     * {@link #COLOR_MODE_MONOCHROME}.
+     * {@link PrintAttributes#COLOR_MODE_COLOR} or in back and white
+     * {@link PrintAttributes#COLOR_MODE_MONOCHROME}.
      *
      * @param colorMode The color mode which is one of
-     *                  {@link #COLOR_MODE_COLOR} and {@link #COLOR_MODE_MONOCHROME}.
+     *                  {@link PrintAttributes#COLOR_MODE_COLOR} and {@link PrintAttributes#COLOR_MODE_MONOCHROME}.
      */
     @SuppressWarnings("unused")
     public void setColorMode(int colorMode) {
@@ -145,8 +136,8 @@ public class LFRollHelper implements RollHelperConstants {
     /**
      * Gets the color mode with which the image will be printed.
      *
-     * @return The color mode which is one of {@link #COLOR_MODE_COLOR}
-     * and {@link #COLOR_MODE_MONOCHROME}.
+     * @return The color mode which is one of {@link PrintAttributes#COLOR_MODE_COLOR}
+     * and {@link PrintAttributes#COLOR_MODE_MONOCHROME}.
      */
     @SuppressWarnings("unused")
     public int getColorMode() {
@@ -647,7 +638,7 @@ public class LFRollHelper implements RollHelperConstants {
      * @return The result of applying the given <code>colorMode</code> on the original {@link Bitmap}.
      */
     private Bitmap convertBitmapForColorMode(Bitmap original, int colorMode) {
-        if (colorMode != COLOR_MODE_MONOCHROME) {
+        if (colorMode != PrintAttributes.COLOR_MODE_MONOCHROME) {
             return original;
         }
         // Create a grayscale bitmap
